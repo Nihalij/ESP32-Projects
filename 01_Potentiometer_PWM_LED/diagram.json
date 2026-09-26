@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "author": "Nihali Jain",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 38.4, "left": -62.36, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -49.3, "left": 57.4, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": 82.8, "left": 61.4, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 119.15,
+      "left": 105.6,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "pot1:VCC", "esp:3V3", "red", [ "v9.6", "h-183.2", "v38.4" ] ],
+    [ "pot1:GND", "esp:GND.2", "black", [ "v48", "h0", "v0", "h0" ] ],
+    [ "pot1:SIG", "esp:34", "green", [ "v19.2", "h-0.4", "h-163.2", "v67.2" ] ],
+    [ "esp:GND.3", "led1:C", "black", [ "h38.4" ] ],
+    [ "led1:A", "r1:1", "green", [ "v0", "h19.2" ] ],
+    [ "esp:18", "r1:2", "green", [ "h124.8", "v-19.2" ] ]
+  ],
+  "dependencies": {}
+}
