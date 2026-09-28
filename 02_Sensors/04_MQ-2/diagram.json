@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "author": "Nihali Jain",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -19.2, "left": 4.84, "attrs": {} },
+    { "type": "wokwi-gas-sensor", "id": "gas1", "top": 41.1, "left": -165.8, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 25.2,
+      "left": 138.2,
+      "attrs": { "color": "white" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 90.35,
+      "left": 134.4,
+      "attrs": { "value": "500" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -64.8,
+      "left": 155.4,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "gas1:AOUT", "esp:35", "green", [ "h38.4" ] ],
+    [ "gas1:GND", "esp:GND.1", "black", [ "h19.2", "v56.8" ] ],
+    [ "gas1:VCC", "esp:3V3", "red", [ "h19.2", "v-77.7" ] ],
+    [ "esp:GND.3", "led1:C", "black", [ "h48" ] ],
+    [ "esp:5", "r1:1", "green", [ "h28.8" ] ],
+    [ "led1:A", "r1:2", "green", [ "h48", "v28.8" ] ],
+    [ "bz1:2", "esp:21", "green", [ "v19.2", "h-67.6", "v19.2" ] ],
+    [ "bz1:1", "esp:GND.2", "black", [ "v9.6", "h-76.8" ] ]
+  ],
+  "dependencies": {}
+}
