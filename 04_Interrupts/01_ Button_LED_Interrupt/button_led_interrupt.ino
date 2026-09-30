@@ -8,6 +8,8 @@ void IRAM_ATTR buttonISR() {
 }
 
 void setup() {
+  Serial.begin(115200);
+
   pinMode(BUTTON_PIN, INPUT_PULLUP);
   pinMode(LED_PIN, OUTPUT);
 
@@ -19,8 +21,14 @@ void setup() {
 }
 
 void loop() {
+
   if (buttonPressed) {
+
     digitalWrite(LED_PIN, !digitalRead(LED_PIN));
+
+    Serial.println("Button Pressed!");
+    Serial.println("Interrupt detected");
+
     buttonPressed = false;
   }
 }
