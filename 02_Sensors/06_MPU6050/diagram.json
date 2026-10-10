@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "author": "Nihali Jain",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-mpu6050", "id": "imu1", "top": 32.62, "left": -122.48, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 44.4,
+      "left": 157.4,
+      "attrs": { "color": "orange" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 90.35,
+      "left": 144,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "imu1:VCC", "esp:3V3", "red", [ "v-28.8", "h19.28", "v19.2", "h19.2" ] ],
+    [ "imu1:GND", "esp:GND.1", "black", [ "v-48", "h38.48", "v163.2" ] ],
+    [ "imu1:SDA", "esp:21", "green", [ "v-67.2", "h220.88", "v105.6" ] ],
+    [ "imu1:SCL", "esp:22", "green", [ "v-57.6", "h192.08", "v67.2" ] ],
+    [ "esp:GND.3", "led1:C", "black", [ "h0" ] ],
+    [ "esp:19", "r1:1", "green", [ "h0" ] ],
+    [ "led1:A", "r1:2", "green", [ "v0", "h38.4" ] ]
+  ],
+  "dependencies": {}
+}
